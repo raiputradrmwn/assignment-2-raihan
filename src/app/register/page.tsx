@@ -1,12 +1,11 @@
 "use client";
-
-import LoginForm from "@/components/layout/loginform";
+import RegisterForm from "@/components/layout/registerform";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function Home() {
+export default function RegisterPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-100">
-      <LoginForm />
+      <RegisterForm />
     </main>
   );
 }
