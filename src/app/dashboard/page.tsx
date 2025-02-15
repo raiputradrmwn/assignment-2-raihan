@@ -15,7 +15,7 @@ export default function Dashboard() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     } else {
-      router.push("/"); // Redirect ke login jika tidak ada user
+      router.push("/"); 
     }
   }, [router]);
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
   };
 
   if (!user) {
-    return null; // Jangan render apapun sebelum data user tersedia
+    return null;
   }
 
   return (

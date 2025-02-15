@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -13,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useMutation } from "@tanstack/react-query";
 import Cookies from "js-cookie";
@@ -33,7 +32,7 @@ export default function RegisterForm() {
     resolver: zodResolver(registerSchema),
     defaultValues: { email: "", password: "" },
   });
-  const router = useRouter();
+  const Router = useRouter();
 
   const registerMutation = useMutation({
     mutationFn: async (data: RegisterData) => {
@@ -49,7 +48,9 @@ export default function RegisterForm() {
           "Registrasi Berhasil! Akun Anda telah terdaftar. Silakan login."
         );
         form.reset({ email: "", password: "" });
-        router.push("/");
+        setTimeout(() => {
+          Router.push("/");
+        }, 1000);
       },
       onError: () => {
         toast.error("Terjadi kesalahan saat registrasi. Silakan coba lagi.");

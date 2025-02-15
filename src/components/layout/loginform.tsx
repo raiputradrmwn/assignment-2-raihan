@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
@@ -35,7 +34,7 @@ export default function LoginForm() {
     defaultValues: { email: "", password: "" },
   });
   const Router = useRouter();
-  
+
   const { data: userData } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
@@ -51,7 +50,9 @@ export default function LoginForm() {
       userData.password === data.password
     ) {
       toast.success("Login Berhasil! Anda telah berhasil masuk.");
-      Router.push("/dashboard");
+        setTimeout(() => {
+          Router.push("/dashboard");
+        }, 1000);
     } else {
       toast.error("Login Gagal! Email atau password salah.");
     }
